@@ -19,6 +19,10 @@
 		7ED7D59717CD26300035DEFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED7D57F17CD26300035DEFC /* UIKit.framework */; };
 		7ED7D59F17CD26300035DEFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED7D59D17CD26300035DEFC /* InfoPlist.strings */; };
 		7ED7D5A117CD26300035DEFC /* dynamicCellHeightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7D5A017CD26300035DEFC /* dynamicCellHeightTests.m */; };
+		7ED7D5AE17CD26520035DEFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7D5AD17CD26520035DEFC /* MainViewController.m */; };
+		7ED7D5B217CD29060035DEFC /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7D5B117CD29060035DEFC /* Story.m */; };
+		7ED7D5B417CD2AFA0035DEFC /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED7D5B317CD2AFA0035DEFC /* stories.json */; };
+		7ED7D5B717CD2D140035DEFC /* DynamicHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7D5B617CD2D140035DEFC /* DynamicHeightCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,13 @@
 		7ED7D59C17CD26300035DEFC /* dynamicCellHeightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dynamicCellHeightTests-Info.plist"; sourceTree = "<group>"; };
 		7ED7D59E17CD26300035DEFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7ED7D5A017CD26300035DEFC /* dynamicCellHeightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dynamicCellHeightTests.m; sourceTree = "<group>"; };
+		7ED7D5AC17CD26520035DEFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = controller/MainViewController.h; sourceTree = "<group>"; };
+		7ED7D5AD17CD26520035DEFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = controller/MainViewController.m; sourceTree = "<group>"; };
+		7ED7D5B017CD29060035DEFC /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Story.h; path = model/Story.h; sourceTree = "<group>"; };
+		7ED7D5B117CD29060035DEFC /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Story.m; path = model/Story.m; sourceTree = "<group>"; };
+		7ED7D5B317CD2AFA0035DEFC /* stories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
+		7ED7D5B517CD2D140035DEFC /* DynamicHeightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicHeightCell.h; path = view/DynamicHeightCell.h; sourceTree = "<group>"; };
+		7ED7D5B617CD2D140035DEFC /* DynamicHeightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicHeightCell.m; path = view/DynamicHeightCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +118,9 @@
 		7ED7D58117CD26300035DEFC /* dynamicCellHeight */ = {
 			isa = PBXGroup;
 			children = (
+				7ED7D5AF17CD28F20035DEFC /* model */,
+				7ED7D5AB17CD263B0035DEFC /* controller */,
+				7ED7D5AA17CD26350035DEFC /* view */,
 				7ED7D58A17CD26300035DEFC /* AppDelegate.h */,
 				7ED7D58B17CD26300035DEFC /* AppDelegate.m */,
 				7ED7D58D17CD26300035DEFC /* Images.xcassets */,
@@ -122,6 +136,7 @@
 				7ED7D58417CD26300035DEFC /* InfoPlist.strings */,
 				7ED7D58717CD26300035DEFC /* main.m */,
 				7ED7D58917CD26300035DEFC /* dynamicCellHeight-Prefix.pch */,
+				7ED7D5B317CD2AFA0035DEFC /* stories.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -142,6 +157,33 @@
 				7ED7D59D17CD26300035DEFC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ED7D5AA17CD26350035DEFC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7ED7D5B517CD2D140035DEFC /* DynamicHeightCell.h */,
+				7ED7D5B617CD2D140035DEFC /* DynamicHeightCell.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		7ED7D5AB17CD263B0035DEFC /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				7ED7D5AC17CD26520035DEFC /* MainViewController.h */,
+				7ED7D5AD17CD26520035DEFC /* MainViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		7ED7D5AF17CD28F20035DEFC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7ED7D5B017CD29060035DEFC /* Story.h */,
+				7ED7D5B117CD29060035DEFC /* Story.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED7D5B417CD2AFA0035DEFC /* stories.json in Resources */,
 				7ED7D58617CD26300035DEFC /* InfoPlist.strings in Resources */,
 				7ED7D58E17CD26300035DEFC /* Images.xcassets in Resources */,
 			);
@@ -240,7 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED7D58C17CD26300035DEFC /* AppDelegate.m in Sources */,
+				7ED7D5AE17CD26520035DEFC /* MainViewController.m in Sources */,
+				7ED7D5B717CD2D140035DEFC /* DynamicHeightCell.m in Sources */,
 				7ED7D58817CD26300035DEFC /* main.m in Sources */,
+				7ED7D5B217CD29060035DEFC /* Story.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

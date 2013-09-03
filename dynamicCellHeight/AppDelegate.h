@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
+#import "Story.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) MainViewController *vc;
 
 @end

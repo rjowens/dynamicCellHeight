@@ -13,10 +13,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.vc = [[MainViewController alloc] init];
+    self.vc.wantsFullScreenLayout = YES;
+    self.vc.stories = [self loadStories];
+    self.window.rootViewController = self.vc;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (NSArray*)loadStories {
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *path = [resourcePath stringByAppendingString:@"/stories.json"];
+    NSData* data = [[NSData alloc] initWithContentsOfFile:path];
+    NSMutableArray *stories = [@[] mutableCopy];
+    NSArray* jsonArray = [NSJSONSerialization JSONObjectWithData:data  options:0  error:nil];
+    for (NSDictionary* storyDict in jsonArray) {
+        [stories addObject:[[Story alloc] initWithDictionary:storyDict]];
+    }
+    return stories;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
