@@ -76,7 +76,8 @@
     } else {
         DynamicHeightCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
         [self populateCell:cell atIndex:indexPath];
-        return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+        [cell updateConstraintsIfNeeded];
+        return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     }
 }
 

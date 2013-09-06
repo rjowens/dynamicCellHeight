@@ -25,28 +25,37 @@
         
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.dateLabel];
-        
-        NSDictionary *viewDict = @{@"title_label": self.titleLabel, @"date_label" : self.dateLabel};
-        
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[title_label]-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:viewDict]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[date_label]-|"
-                                                                                 options:0
-                                                                                 metrics:nil
-                                                                                   views:viewDict]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[title_label][date_label]-|"
-                                                                                 options:0
-                                                                                 metrics:nil
-                                                                                   views:viewDict]];
     }
     return self;
 }
 
+- (void)prepareForReuse {
+    [self updateConstraintsIfNeeded];
+}
+
+- (void) updateConstraints {
+    [self.contentView removeConstraints:self.contentView.constraints];
+    [super updateConstraints];
+    NSDictionary *viewDict = @{@"title_label": self.titleLabel, @"date_label" : self.dateLabel};
+    
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[title_label]-|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:viewDict]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[date_label]-|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:viewDict]];
+    
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[title_label]-(2)-[date_label]-|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:viewDict]];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
