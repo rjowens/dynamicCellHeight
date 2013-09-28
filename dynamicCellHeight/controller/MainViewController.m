@@ -10,6 +10,8 @@
 
 @interface MainViewController ()
 
+@property (nonatomic, strong) DynamicHeightCell *cellSizes;
+
 @end
 
 @implementation MainViewController
@@ -24,28 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView = [[UITableView alloc] init];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     [self.tableView registerClass:[DynamicHeightCell class] forCellReuseIdentifier:@"cell"];
-    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.tableView];
-    
-    NSDictionary *viewDict = @{@"tableView": self.tableView};
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[tableView]|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                        views:viewDict]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[tableView]|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                        views:viewDict]];
-    
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,19 +47,16 @@
 
 - (void)populateCell:(DynamicHeightCell*)cell atIndex:(NSIndexPath *)indexPath {
     Story *story = self.stories[indexPath.row];
-    cell.titleLabel.text = story.title;
-    cell.dateLabel.text = story.date;
+    cell.textView.text = story.title;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.cellSizes objectAtIndex:indexPath.row] != nil) {
-        return [self.cellSizes[indexPath.row] floatValue];
-    } else {
-        DynamicHeightCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        [self populateCell:cell atIndex:indexPath];
-        [cell updateConstraintsIfNeeded];
-        return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    if (!self.cellSizes) {
+        self.cellSizes = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
     }
+    [self populateCell:self.cellSizes atIndex:indexPath];
+    [self.cellSizes updateConstraintsIfNeeded];
+    return [self.cellSizes dynamicHeight];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

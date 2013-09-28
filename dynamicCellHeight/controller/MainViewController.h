@@ -10,10 +10,9 @@
 #import "DynamicHeightCell.h"
 #import "Story.h"
 
-@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *stories;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *cellSizes;
 
 @end

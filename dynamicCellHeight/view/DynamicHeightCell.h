@@ -10,7 +10,8 @@
 
 @interface DynamicHeightCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *dateLabel;
+- (CGFloat) dynamicHeight;
+
+@property (nonatomic, strong) UITextView *textView;
 
 @end
